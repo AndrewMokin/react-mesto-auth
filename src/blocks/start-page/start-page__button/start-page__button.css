@@ -1,0 +1,30 @@
+.start-page__button {
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    border: 0;
+    margin: 261px 0 0 0;
+    width: 358px;
+    height: 50px;
+    color:#000000;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    transition: opacity 0.2s linear;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+  }
+
+  .start-page__button:hover {
+    opacity: 0.8;
+  }
+
+  @media screen and (max-width: 900px) {
+    .start-page__button {
+      width: 260px;
+      height: 46px;
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
