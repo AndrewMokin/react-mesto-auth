@@ -25,6 +25,8 @@ function Login({onLogin}) {
      onChangeEmail={handleEmailChange}
      onChangePassword={handlePasswordChange}
      button="Войти"
+     valueEmail={email}
+     valuePassword={password}
     />
   )
 

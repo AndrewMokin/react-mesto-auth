@@ -26,6 +26,8 @@ function Register({onRegister}) {
      onChangeEmail={handleEmailChange}
      onChangePassword={handlePasswordChange}
      button="Зарегистрироваться"
+     valueEmail={email}
+     valuePassword={password}
      >
        <div className="register">
        <h2 className="register__little-title">Уже зарегистрированы?</h2>

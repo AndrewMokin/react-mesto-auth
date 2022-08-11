@@ -1,7 +1,7 @@
 // import React, { useState } from "react";
 import React, {useState} from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
   const [avatar, setAvatar] = useState("");

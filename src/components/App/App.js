@@ -13,7 +13,7 @@ import Register from "../Register/Register";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import MainFooter from "../MainFooter/MainFooter";
 import { register, authorization, validationToken } from "../../utils/Auth";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const api = new Api({
   address: "https://mesto.nomoreparties.co/v1/cohort-38",
@@ -25,7 +25,7 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false);
   const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = useState(false);
-  const [isInfoTooltip,setIsInfoTooltip] = useState('')
+  const [isInfoTooltipSucces,setIsInfoTooltipSucces] = useState(false)
   const [userEmailInHeader,setUserEmailInHeader] = useState('')
   const [selectedCard, setSelectedCard] = useState(null);
   const [cards, setCards] = useState([]);
@@ -96,9 +96,10 @@ function App() {
   }
 
   useEffect(() => {
+    isLoggedIn &&
     getCards();
     getUserInfo();
-  },[]);
+  },[isLoggedIn]);
 
   const handleEditProfileClick = () => {
     setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
@@ -171,28 +172,10 @@ function App() {
       });
   }
 
-  // const tokenCheck = () => {
-  //   const jwt = localStorage.getItem('jwt');
-  //   if (!jwt) {
-  //     return;
-  //   }
-
-  //   Auth
-  //     .getContent(jwt)
-  //     .then(({ username, email }) => {
-  //       setUserInfo({ username, email });
-  //       setIsLoggedIn(true);
-  //     });
-  // };
-
-
-
-
   function onLogin (password, email) {
     authorization (password, email)
       .then((res) => {
         if(res) {
-          console.log(res)
           setLoggedIn(true);
           setUserEmailInHeader(email);
           history.push('/');
@@ -200,7 +183,7 @@ function App() {
         }
       })
       .catch(() => {
-        setIsInfoTooltip(false)
+        setIsInfoTooltipSucces(false)
         setIsInfoTooltipPopupOpen(true)
       });
   }
@@ -208,15 +191,14 @@ function App() {
   function onRegister(email, password) {
     register(password, email)
       .then((res) => {
-        console.log(res)
         setIsInfoTooltipPopupOpen(true)
         if(res) {
-          setIsInfoTooltip(true)
+          setIsInfoTooltipSucces(true)
           history.push('/sign-in');
         }
       })
       .catch(() => {
-        setIsInfoTooltip(false)
+        setIsInfoTooltipSucces(false)
         setIsInfoTooltipPopupOpen(true)
       });
   }
@@ -302,8 +284,10 @@ function App() {
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
         <InfoTooltip
           isOpen={isInfoTooltipPopupOpen}
-          check={isInfoTooltip}
+          check={isInfoTooltipSucces}
           onClose={closeAllPopups}
+          checkOk="Вы успешно зарегистрировались!"
+          checkFailed="Что-то пошло не так! Попробуйте еще раз"
         />
       </div>
     </CurrentUserContext.Provider>

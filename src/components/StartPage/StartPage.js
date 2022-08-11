@@ -1,4 +1,5 @@
-function StartPage({ onSubmit, authentication, onChangeEmail, onChangePassword, button, children }) {
+function StartPage({ onSubmit, authentication, onChangeEmail, onChangePassword, button, children, valuePassword, valueEmail }) {
+
  return (
   <form className="start-page" onSubmit={onSubmit}>
     <h2 className="start-page__title">{authentication}</h2>
@@ -6,6 +7,7 @@ function StartPage({ onSubmit, authentication, onChangeEmail, onChangePassword, 
       className="start-page__input"
       placeholder="email"
       onChange={onChangeEmail}
+      value={valueEmail}
       required
       type='email'
     />
@@ -13,6 +15,7 @@ function StartPage({ onSubmit, authentication, onChangeEmail, onChangePassword, 
       className="start-page__input"
       placeholder="Password"
       onChange={onChangePassword}
+      value={valuePassword}
       required
       type='password'
     />
