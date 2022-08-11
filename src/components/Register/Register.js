@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
+import {Link} from 'react-router-dom'
 import StartPage from '../StartPage/StartPage'
 
-function Register({onLogin}) {
+function Register({onRegister}) {
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
 
@@ -15,7 +16,7 @@ function Register({onLogin}) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    onLogin(email,password)
+    onRegister(email,password)
   }
 
   return (
@@ -28,7 +29,7 @@ function Register({onLogin}) {
      >
        <div className="register">
        <h2 className="register__little-title">Уже зарегистрированы?</h2>
-       <button className="register__little-button">Войти</button>
+       <Link to="sign-in" className="register__little-button">Войти</Link>
        </div>
     </StartPage>
   )

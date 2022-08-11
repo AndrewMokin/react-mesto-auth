@@ -9,6 +9,8 @@
   line-height: 17px;
   cursor:pointer;
   transition: opacity 0.2s linear;
+  text-decoration: none;
+  margin-left: 5px;
 }
 
 .register__little-button:hover {
