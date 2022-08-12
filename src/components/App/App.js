@@ -96,9 +96,10 @@ function App() {
   }
 
   useEffect(() => {
-    isLoggedIn &&
-    getCards();
-    getUserInfo();
+    if (isLoggedIn) {
+      getCards();
+      getUserInfo();
+    }
   },[isLoggedIn]);
 
   const handleEditProfileClick = () => {
