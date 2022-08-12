@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
-import "../../index.css";
 import Header from "../Header/Header";
 import ImagePopup from "../ImagePopup/ImagePopup";
 import Api from "../../utils/Api";
